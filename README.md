@@ -1,6 +1,6 @@
 # Overview
 
-This is ChatNova, a modern AI chatbot application built as a full-stack web platform. The application enables users to interact with multiple AI service providers (OpenAI, Anthropic, and Google) through a unified interface. Users can create conversations, manage API keys, and switch between different AI models seamlessly. The system features a clean, responsive design with support for image uploads and comprehensive conversation management.
+This is ChatNova, a modern AI chatbot application built as a full-stack web platform. The application enables users to interact with multiple AI service providers through a unified interface. Users can create conversations, manage API keys, and switch between different AI models seamlessly. The system features a clean, responsive design with support for image uploads and comprehensive conversation management.
 
 # User Preferences
 
@@ -51,6 +51,7 @@ Preferred communication style: Simple, everyday language.
 - **OpenAI SDK**: For GPT model interactions and API communication
 - **Anthropic SDK**: For Claude model conversations and responses
 - **Google GenAI**: For Gemini model integration and text generation
+- and MORE
 
 ## Database Services
 - **Neon Database**: Serverless PostgreSQL hosting with connection pooling
