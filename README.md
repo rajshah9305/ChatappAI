@@ -1,77 +1,196 @@
-# Overview
+# ChatappAI - Modern AI Chat Platform
 
-This is ChatNova, a modern AI chatbot application built as a full-stack web platform. The application enables users to interact with multiple AI service providers through a unified interface. Users can create conversations, manage API keys, and switch between different AI models seamlessly. The system features a clean, responsive design with support for image uploads and comprehensive conversation management.
+ChatappAI is a production-ready AI chat platform that enables seamless interactions with multiple AI providers through a unified, modern interface. Built with TypeScript, React, and Node.js, it offers a sophisticated yet user-friendly experience for AI-powered conversations.
 
-# User Preferences
+![ChatappAI Interface](./docs/images/chat-interface.png)
 
-Preferred communication style: Simple, everyday language.
+## ✨ Features
 
-# System Architecture
+- 🤖 Multi-Provider AI Support (OpenAI, Anthropic, Google AI)
+- 🎨 Modern, responsive UI with dark/light mode
+- 📁 File and image upload support
+- 💾 Persistent conversation history
+- 🔐 Secure API key management
+- ⚡ Real-time message streaming
+- 📱 Mobile-friendly design
+- 🔍 Conversation search and filtering
+- 🎭 Custom chat templates
+- 📊 Usage analytics
 
-## Frontend Architecture
-- **Framework**: React with TypeScript using Vite for fast development and building
-- **UI Library**: Shadcn/UI components built on Radix UI primitives with Tailwind CSS for styling
-- **State Management**: TanStack Query for server state management and caching
-- **Routing**: Wouter for lightweight client-side routing
-- **Styling**: Tailwind CSS with CSS custom properties for theming support
+## 🚀 Quick Start
 
-## Backend Architecture
-- **Runtime**: Node.js with Express.js framework
-- **Language**: TypeScript with ES modules
-- **API Design**: RESTful endpoints for conversations, messages, API keys, and provider management
-- **Development**: Hot reload with Vite integration in development mode
-- **Session Management**: Express session middleware with PostgreSQL session store
+### Prerequisites
 
-## Data Storage
-- **Database**: PostgreSQL with Drizzle ORM for type-safe database operations
-- **Schema**: Well-structured tables for users, conversations, messages, and API keys
-- **Migrations**: Drizzle Kit for database schema management
-- **Connection**: Neon Database serverless PostgreSQL for scalability
+- Node.js 18.x or higher
+- PostgreSQL 14.x or higher
+- NPM or Yarn
+- Git
 
-## AI Provider Integration
-- **Multi-Provider Support**: Unified service layer supporting OpenAI, Anthropic, and Google AI
-- **Model Configuration**: Default models (GPT-4o, Claude Sonnet 4, Gemini 2.5 Flash) with dynamic model selection
-- **API Key Management**: Secure storage and retrieval of user API keys per provider
-- **Request Routing**: Dynamic routing based on user's provider selection and model preferences
+### Environment Setup
 
-## Authentication & Security
-- **Mock Authentication**: Currently uses a mock user system for development
-- **API Key Storage**: Encrypted storage of user API keys in the database
-- **Input Validation**: Zod schemas for request validation and type safety
-- **Error Handling**: Comprehensive error handling with user-friendly messages
+1. Clone the repository:
+```bash
+git clone https://github.com/rajshah9305/ChatappAI.git
+cd ChatappAI
+```
 
-## File Upload & Media
-- **Image Support**: Base64 encoding for image uploads with drag-and-drop functionality
-- **File Types**: Support for common image formats with client-side validation
-- **Preview**: Real-time image preview before sending messages
+2. Install dependencies:
+```bash
+npm install
+```
 
-# External Dependencies
+3. Create `.env` file in project root:
+```env
+# Database
+DATABASE_URL="postgresql://user:password@localhost:5432/chatappai"
 
-## AI Service Providers
-- **OpenAI SDK**: For GPT model interactions and API communication
-- **Anthropic SDK**: For Claude model conversations and responses
-- **Google GenAI**: For Gemini model integration and text generation
-- and MORE
+# API Keys (optional - can be set per user)
+OPENAI_API_KEY=""
+ANTHROPIC_API_KEY=""
+GOOGLE_AI_API_KEY=""
 
-## Database Services
-- **Neon Database**: Serverless PostgreSQL hosting with connection pooling
-- **Drizzle ORM**: Type-safe database operations and schema management
-- **PostgreSQL Session Store**: For persistent session management
+# Security
+JWT_SECRET="your-jwt-secret"
+ENCRYPTION_KEY="your-encryption-key"
 
-## UI & Styling
-- **Radix UI**: Accessible component primitives for complex UI elements
-- **Tailwind CSS**: Utility-first CSS framework for rapid styling
-- **Lucide React**: Icon library for consistent iconography
-- **React Icons**: Additional icon sets including brand icons
+# Server
+PORT=5000
+NODE_ENV="development"
+```
 
-## Development Tools
-- **Vite**: Fast build tool and development server
-- **TypeScript**: Type safety and developer experience
-- **ESBuild**: Fast JavaScript bundler for production builds
-- **React Hook Form**: Form management with validation
+4. Initialize database:
+```bash
+npm run db:migrate
+```
 
-## Third-party Libraries
-- **TanStack Query**: Server state management and caching
-- **Wouter**: Lightweight routing for React applications
-- **Zod**: Runtime type validation and schema definition
-- **Date-fns**: Date manipulation and formatting utilities
+### Development
+
+Start the development server:
+```bash
+npm run dev
+```
+
+The app will be available at `http://localhost:5000`
+
+### Production Build
+
+Build the application:
+```bash
+npm run build
+```
+
+Start production server:
+```bash
+npm start
+```
+
+## 🏗️ Architecture
+
+### Tech Stack
+
+- **Frontend**: React 18, TypeScript, Vite, TailwindCSS
+- **Backend**: Node.js, Express, TypeScript
+- **Database**: PostgreSQL with Drizzle ORM
+- **Authentication**: JWT with secure session management
+- **State Management**: TanStack Query
+- **UI Components**: Radix UI + Shadcn/UI
+- **Testing**: Vitest, React Testing Library
+- **Deployment**: Vercel
+
+### Project Structure
+
+```
+chatappai/
+├── client/                 # Frontend React application
+│   ├── src/
+│   │   ├── components/    # React components
+│   │   ├── hooks/        # Custom React hooks
+│   │   ├── lib/          # Utility functions
+│   │   ├── pages/        # Page components
+│   │   └── types/        # TypeScript definitions
+├── server/                # Backend Express application
+│   ├── api/              # API routes
+│   ├── config/           # Configuration
+│   ├── db/               # Database migrations and schema
+│   ├── services/         # Business logic
+│   └── types/            # TypeScript definitions
+├── shared/               # Shared types and utilities
+└── docs/                 # Documentation
+```
+
+## 🚢 Deployment
+
+### Vercel Deployment
+
+1. Fork this repository
+2. Create a new project on Vercel
+3. Connect your forked repository
+4. Add environment variables in Vercel dashboard
+5. Deploy!
+
+### Manual Deployment
+
+1. Build the application:
+```bash
+npm run build
+```
+
+2. Set production environment variables
+3. Start the server:
+```bash
+npm start
+```
+
+## 📝 API Documentation
+
+API documentation is available at `/api/docs` when running the server. It includes:
+- Authentication endpoints
+- Conversation management
+- Message operations
+- File upload handling
+- User preferences
+
+## 🔒 Security Features
+
+- JWT-based authentication
+- API key encryption at rest
+- Rate limiting
+- Input sanitization
+- CORS protection
+- XSS prevention
+- SQL injection protection
+
+## 🧪 Testing
+
+Run tests:
+```bash
+npm test           # Run all tests
+npm run test:e2e   # Run E2E tests
+npm run test:unit  # Run unit tests
+```
+
+## 📈 Performance Optimization
+
+- Code splitting
+- Image optimization
+- Response caching
+- Database indexing
+- Lazy loading
+- Asset compression
+
+## 📦 Dependencies
+
+- See `package.json` for complete list
+- All dependencies are production-ready and actively maintained
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/name`)
+3. Commit changes (`git commit -am 'Add feature'`)
+4. Push branch (`git push origin feature/name`)
+5. Create Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
